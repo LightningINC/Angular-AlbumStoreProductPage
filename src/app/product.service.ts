@@ -7,12 +7,12 @@ import { Album } from './album';
 
 @Injectable()
 export class ProductService {
-  private _albumUrl : string = '../assets/album.json';
+  private _albumUrl = '../assets/album.json';
   constructor(private _http: Http) { }
 
   getAlbum(id: number): Observable<Album> {
     return this._http.get(this._albumUrl).pipe(
-      map(response => response.json() as Album)
+      map(response => <Album> response.json())
     );
   }
 }
