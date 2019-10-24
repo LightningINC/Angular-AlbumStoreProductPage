@@ -11,7 +11,11 @@ export class ProductService {
 
   getAlbum(id: number): Observable<Album> {
     return this._http.get(this._albumUrl).pipe(
-      map(response => (<Album>response.json()))
+      map(response => {
+        const resp: Album = response.json();
+
+        return <Album>resp;
+      })
     );
   }
 }
